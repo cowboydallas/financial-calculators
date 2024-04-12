@@ -11,14 +11,10 @@ public class CalculatorOne {
 
         if (choice == 1){
             mortgageCalculator();}
-        else if(choice == 2){
-            cdCalculator();}
-        else if (choice == 3){
-            presentValueCalculator();}
 
         }
 
-        public static void mortgageCalculator() {
+       public static void mortgageCalculator() {
     Scanner choice = new Scanner(System.in);
             double loanLength = 0;
             double principal = 0;
@@ -32,8 +28,12 @@ public class CalculatorOne {
             double loanLengthAmt = choice.nextDouble();
 
             double monthlyInterestRate = interestRateAmt/1200;
-            double monthlyTotalMonth = loanLength*12;
-            double monthlyPayment = (principal*interestRateAmt*Math.pow(1+interestRateAmt,loanLengthAmt))/(Math.pow(1+interestRateAmt,loanLengthAmt)-1);
+            double monthlyTotalMonth = loanLengthAmt*12;
+            double monthlyPayment = (principalAmt*(monthlyInterestRate*Math.pow(1+monthlyInterestRate,monthlyTotalMonth))/(Math.pow(1+monthlyInterestRate,monthlyTotalMonth)-1));
+            double totalInterest = monthlyPayment * monthlyTotalMonth - principalAmt;
+
+            System.out.println("Your expected monthly payment is: " + String.format("%.2f", monthlyPayment));
+            System.out.println("with a total interest paid of " + String.format("%.2f", totalInterest));
         }
 
 
